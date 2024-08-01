@@ -2,6 +2,7 @@
 
 session_start();
 require_once("models/database.php"); 
+require_once("includes/mesfonctions.php");
 
 if(isset($_GET["page"])){
     switch ($_GET["page"]) {

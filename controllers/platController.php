@@ -10,10 +10,8 @@ if (isset($_POST["ajouter"])) {
     if (ajouterUnPlat($nom, $description, $prix, $img_name, $categorie_id)) {
         move_uploaded_file($img, "images/".$img_name);
 
-        $_SESSION['toastr'] = [
-            'type' => 'success',
-            'message' => 'Ajout plat avec succès!'
-        ];
+        // on va personnaliser le message d'ajout en utilisant le toastr 
+       setToastr("Ajout plat avec succès");
 
         header("Location:?page=plats");
         exit();
@@ -35,6 +33,8 @@ if (isset($_POST["modifier"])) {
     }
 
     if (modifierUnPlat($plat->id, $nom, $description, $prix, $img_name, $categorie_id)) {
+       setToastr("Edition plat avec succès", "success");
+        
         header("Location:?page=plats");
         exit();
     }

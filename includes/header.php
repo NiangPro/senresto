@@ -7,7 +7,9 @@
   <title>Modernize Free</title>
   <link rel="shortcut icon" type="image/png" href="assets/themes/images/logos/favicon.png" />
   <link rel="stylesheet" href="assets/themes/css/styles.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+  <!-- on intégre le lien cdn de toastr  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
