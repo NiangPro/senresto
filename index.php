@@ -18,6 +18,9 @@ if(isset($_GET["page"])){
         case 'plats':
             require_once("controllers/platController.php");
             break;
+        case 'chefs':
+            require_once("controllers/chefsController.php");
+            break;
         case 'connexion':
             require_once("controllers/connexionController.php");
             break;

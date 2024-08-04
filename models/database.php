@@ -23,6 +23,79 @@ function seConnecter($email, $mdp){
     }
 }
 
+function ajoutUtilisateur($prenom, $nom, $tel, $adresse, $email, $role, $image = "", $mdp = ""){
+    global $db;
+    try {
+        $q = $db->prepare("INSERT INTO users VALUES(null, :prenom, :nom, :tel, :adresse, :email, :mdp, :role, :image)");
+        return $q->execute([
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "tel" => $tel,
+            "adresse" => $adresse,
+            "email" => $email,
+            "mdp" => $mdp,
+            "role" => $role,
+            "image" => $image
+        ]);
+    } catch (PDOException $e) {
+        setToastr($e->getMessage(), "error");
+    }
+}
+
+function modifierUtilisateur($id, $prenom, $nom, $tel, $adresse, $email, $image){
+    global $db;
+    try {
+        $q = $db->prepare("UPDATE users 
+        SET prenom =:prenom, nom =:nom, tel =:tel, adresse =:adresse, email =:email, image =:image
+        WHERE id =:id");
+        return $q->execute([
+            "prenom" => $prenom,
+            "nom" => $nom,
+            "tel" => $tel,
+            "adresse" => $adresse,
+            "email" => $email,
+            "id" => $id,
+            "image" => $image
+        ]);
+    } catch (PDOException $e) {
+        setToastr($e->getMessage(), "error");
+    }
+}
+
+function supprimerUnUtilisateur($id){
+    global $db;
+    try {
+        $q = $db->prepare("DELETE FROM users WHERE id =:id");
+        return $q->execute(["id" => $id]);
+    } catch (PDOException $e) {
+        setToastr($e->getMessage(), "error");
+    }
+}
+
+function recupererDesUtilisateurParRole($role = "client"){
+    global $db;
+    try {
+        $q = $db->prepare("SELECT * FROM users WHERE role =:role ORDER BY id DESC");
+        $q->execute(["role" => $role]);
+
+        return $q->fetchAll(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+        setToastr($e->getMessage(), "error");
+    }
+}
+
+function recupererUnUtilisateur($id){
+    global $db;
+    try {
+        $q = $db->prepare("SELECT * FROM users WHERE id =:id");
+        $q->execute(["id" => $id]);
+
+        return $q->fetch(PDO::FETCH_OBJ);
+    } catch (PDOException $e) {
+        setToastr($e->getMessage(), "error");
+    }
+}
+
 function ajouterUneCategorie($nom, $tag, $image){
     global $db;
     try {

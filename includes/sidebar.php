@@ -42,6 +42,14 @@
               </a>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link" href="?page=chefs" aria-expanded="false">
+                <span>
+                  <i class="ti ti-users"></i>
+                </span>
+                <span class="hide-menu">Chefs</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-users"></i>
